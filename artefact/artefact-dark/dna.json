@@ -1,0 +1,196 @@
+{
+  "id": "artefact-dark",
+  "name": "Artefact Dark",
+  "version": 2,
+  "theme": "dark",
+  "summary": "Le thème principal d’ARTEFACT : un bleu-gris profond pour des analystes SOC qui y passent leur journée, une hiérarchie dense en Jost, la criticité portée par des points et des badges, jamais par les fonds.",
+  "bestFor": [
+    "soc",
+    "siem",
+    "security operations",
+    "alert triage",
+    "incident response",
+    "investigation",
+    "threat intelligence",
+    "asset inventory",
+    "cybersecurity dashboard",
+    "admin console"
+  ],
+  "mood": [
+    "technical",
+    "dense",
+    "precise",
+    "calm",
+    "dark"
+  ],
+  "tokens": {
+    "base": "#181C23",
+    "surface": "#1B1E24",
+    "raised": "#1E232C",
+    "line": "#2E3441",
+    "ink": "#FAFAFA",
+    "muted": "#9498A2",
+    "accent": "#FAFAFA",
+    "accentInk": "#181C23",
+    "accent2": "#CC6BFF",
+    "accentText": "#88A9FD",
+    "success": "#27CC44",
+    "warning": "#FFA44E",
+    "danger": "#FE5A74"
+  },
+  "extraColors": {
+    "accent-ui": "#2F6AFF",
+    "ink-soft": "#CCCED1",
+    "sev-critical": "#FF577B",
+    "sev-high": "#FF8947",
+    "sev-medium": "#EDAB00",
+    "sev-low": "#FDB171",
+    "status-pending": "#9298A4",
+    "status-investigation": "#5D96FF",
+    "status-remediation": "#00ADBA",
+    "status-resolved": "#36D261",
+    "status-incident": "#FA6A57"
+  },
+  "rootFontSize": "15px",
+  "dataPalette": [
+    "#2F6AFF",
+    "#CC6BFF",
+    "#00BDCA",
+    "#7173D7",
+    "#A7AEBB"
+  ],
+  "fonts": {
+    "display": "Jost",
+    "body": "Jost",
+    "mono": "ui-monospace",
+    "accent": "Kufam",
+    "displayWeights": [
+      500,
+      600
+    ],
+    "bodyWeights": [
+      400,
+      500,
+      600
+    ]
+  },
+  "headings": {
+    "weight": 600,
+    "tracking": "0em",
+    "leading": "1.35"
+  },
+  "shape": {
+    "radius": "7.375px",
+    "radiusLarge": "13.375px",
+    "borderWidth": "1px"
+  },
+  "elevation": {
+    "card": "none",
+    "overlay": "0 12px 40px rgba(0,0,0,0.55)"
+  },
+  "rules": {
+    "do": [
+      "Une seule action principale pleine par section : bg-accent text-accent-ink (= --primary, near-black en clair, near-blanc en sombre). Jamais brandée : ni rose, ni bleu. Actions secondaires en contour (border border-line), barres d’outils en bouton discret.",
+      "Liens textuels en text-accent underline underline-offset-4, soulignement PERSISTANT (pas seulement au survol). Un lien n’est jamais en couleur primaire.",
+      "Sévérité : rouge, orange, ambre et beige sont RÉSERVÉS à la criticité (sev-critical, sev-high, sev-medium, sev-low) ; le vert au succès et à la résolution. Badge de sévérité ou de statut : border border-sev-critical/30 bg-sev-critical/10 text-sev-critical (idem status-*). Catégories et tags neutres : text-muted bg-raised border-line/40.",
+      "Focus visible sur tout contrôle : focus-visible:ring-[3px] ring-accent-ui, anneau plein (jamais ring-accent-ui/50). Transitions 150 à 500 ms, survol discret (hover:brightness-110 ou fond un cran plus clair)."
+    ],
+    "dont": [
+      "Pas de couleur codée en dur (hex, oklch, rgba) ni de couleur Tailwind nommée : uniquement les tokens et les couleurs métier de la DNA.",
+      "Pas de rose de marque dans l’interface : il est réservé au wordmark ARTEFACT (font-accent, Kufam, gras) ; le violet accent2 sert à l’identité et à la dataviz.",
+      "Pas de rouge, orange, ambre ou vert pour une catégorie, une difficulté ou un tag générique.",
+      "Pas de Kufam hors du wordmark et des titres d’identité forte : tout le texte d’interface est en Jost.",
+      "Jamais de bordure latérale épaisse (border-l-[3px]…) sur un élément arrondi : elle épouse l’arrondi. Un indicateur latéral est un trait droit intérieur, en position absolue et décollé des coins (absolute inset-y-* left-0 w-[3px] rounded-full bg-<couleur>, parent relative)."
+    ]
+  },
+  "modes": {
+    "product-desktop": {
+      "signature": "Le fond technique ARTEFACT : grille fine et diagonales discrètes, halos radiaux bleu et violet très doux derrière le contenu ; sur le tableau de bord, l’orbe SIEM centrale (disque en verre au contour violet, satellites cliquables) avec un léger glow additif.",
+      "density": "compact",
+      "sizes": {
+        "control": "2.25rem",
+        "controlSm": "2rem",
+        "row": "2.5rem",
+        "sidebar": "224px",
+        "icon": "1rem"
+      },
+      "states": {
+        "selected": "relative bg-accent-ui/10 font-semibold, avec un trait droit intérieur <span class=\"absolute inset-y-1.5 left-0 w-[3px] rounded-full bg-accent-ui\" aria-hidden=\"true\">",
+        "hover": "hover:bg-raised",
+        "focus": "focus-visible:ring-[3px] focus-visible:ring-accent-ui",
+        "disabled": "opacity-50 cursor-not-allowed"
+      },
+      "rules": {
+        "do": [
+          "Traduction vers le code ARTEFACT (React + Tailwind + composants ui/) : bg-base → bg-background, bg-surface → bg-card, bg-raised → bg-muted ou bg-popover, text-ink → text-foreground, text-muted → text-muted-foreground, border-line → border-border, bg-accent + text-accent-ink → <Button variant=\"default\"> (bg-primary), text-accent → text-accent-ui. Les couleurs métier (sev-*, status-*, accent-ui, ink-soft) portent déjà le nom des tokens de vars.css.",
+          "Cartes au fond neutre (bg-surface border border-line rounded-card), padding sur un div interne (p-6, ou px-2 py-2 pour une ligne d’alerte compacte). La criticité vit dans un point h-1.5 w-1.5 rounded-full bg-sev-* ou un badge compact, jamais dans le fond.",
+          "Workflow d’alerte : En attente = status-pending, Investigation = status-investigation, Remédiation = status-remediation, Résolue = status-resolved, Incident = status-incident.",
+          "Hiérarchie dense et sobre : titre de page text-xl font-semibold ; titre de section text-sm font-semibold ; label text-xs font-medium uppercase tracking-wide text-muted ; corps text-sm ; dense text-xs ; identifiants, IP, hash et horodatages en font-mono text-xs. Racine à 15 px : text-sm = 13,1 px.",
+          "Page : conteneur p-6 space-y-6, en-tête (titre, contexte, action principale), puis grilles grid gap-4. Widgets et cartes de stats en verre : bg-surface/50 backdrop-blur-lg border border-line/50 shadow-overlay.",
+          "Carte KPI : fond neutre, accent porté par un trait droit intérieur (<span class=\"absolute inset-y-3 left-0 w-[3px] rounded-full bg-sev-*\" aria-hidden=\"true\"> dans une carte relative), décollé des coins, une puce et un libellé, jamais par un aplat de couleur.",
+          "États distincts : chargement en squelette qui garde les colonnes du tableau ; vide (explication + action) ; ERREUR BACKEND distincte du vide (encart role=\"alert\" bordé danger, bouton Réessayer) : un échec de lecture ne s’affiche jamais comme « 0 résultat »."
+        ],
+        "dont": [
+          "Pas de fond de carte, de ligne ou de KPI teinté par la sévérité ou un sentiment (« tout est en erreur »).",
+          "Pas de badge d’état tronqué : le mot porte l’information. Dimensionner le conteneur pour que le libellé tienne plutôt que de le rogner."
+        ]
+      },
+      "patterns": [
+        "artefact-sidebar",
+        "artefact-alert-rows",
+        "artefact-kpi",
+        "artefact-backend-error",
+        "artefact-question-card"
+      ]
+    },
+    "website": {
+      "signature": "Le hero sur le fond technique ARTEFACT : grille fine et diagonales discrètes, halos radiaux accent-ui et accent2 très doux derrière le titre Jost font-semibold (text-5xl md:text-7xl tracking-tight) aligné à gauche, une action en encre claire, et à droite l'orbe SIEM (disque en verre au contour violet, satellites des sources) avec un léger glow additif ; dessous, une capture du tableau d'alertes qui déborde du pli.",
+      "rules": {
+        "do": [
+          "Hiérarchie du produit, agrandie pour une page : sur-titre text-xs font-medium uppercase tracking-wide text-muted, titre font-display font-semibold (text-4xl md:text-6xl, tracking-tight), phrase d'appui text-base text-muted max-w-xl, puis l'action.",
+          "Action principale en encre : bg-accent text-accent-ink rounded-ui h-10 px-4 text-sm font-medium (jamais de bouton de couleur) ; secondaire en contour border border-line text-ink ; liens en text-accent.",
+          "Cartes au fond neutre bg-surface border border-line rounded-card p-6 ; captures de l'application dans un cadre rounded-card border border-line qui montrent de vraies alertes, IP et horodatages en font-mono.",
+          "Preuves concrètes : rangée de chiffres opérationnels (MTTR, alertes triées, sources connectées) en text-4xl font-semibold tabular-nums avec une légende text-sm text-muted.",
+          "La criticité garde son code sur la page : point h-1.5 w-1.5 rounded-full bg-sev-* ou badge compact devant le mot, jamais un fond de section teinté.",
+          "Conteneur max-w-6xl px-6, sections py-20 à py-24, alternance texte et capture en deux colonnes sur desktop, une colonne en mobile.",
+          "Fond technique (grille et diagonales à 4–6 % d'opacité, halos flous bg-accent-ui/10 et bg-accent2/10) réservé au hero et au bandeau final ; le reste de la page sur bg-base uni."
+        ],
+        "dont": [
+          "Pas de rouge, d'orange, d'ambre ni de beige décoratifs : ils sont réservés à la sévérité.",
+          "Pas de bouton en couleur de marque : l'action est en encre.",
+          "Pas d'illustration générique de cybersécurité (cadenas, hacker à capuche, bouclier) : des captures du produit ou des emplacements data-image décrits.",
+          "Pas de couleur codée en dur ni de couleur Tailwind nommée : tokens et extraColors uniquement.",
+          "Pas de section claire : la page reste dans le bleu-gris profond du produit.",
+          "Pas de font-accent : Kufam est réservée au wordmark ARTEFACT. Le mot-clé d’un titre passe en text-accent, pas dans une autre police."
+        ]
+      }
+    },
+    "presentation": {
+      "signature": "Une diapo de situation sur le fond technique ARTEFACT (grille fine, halos accent-ui et accent2 très doux) : le titre Jost font-semibold en text-title à gauche, un seul chiffre en text-display tabular-nums (alertes critiques, MTTR) précédé d'un point bg-sev-critical, et sa période en text-subtitle text-muted ; l'orbe SIEM n'apparaît qu'une fois, sur la diapo d'ouverture.",
+      "typeScale": {
+        "display": "144px",
+        "title": "88px",
+        "subtitle": "40px",
+        "body": "32px",
+        "caption": "22px"
+      },
+      "rules": {
+        "do": [
+          "Un titre en text-title (88px) par diapo, qui affirme ; au plus six lignes en text-body (32px) ; sources, dates et numéros en text-caption text-muted (22px), jamais plus petit.",
+          "La criticité garde son code : point bg-sev-* ou badge devant le mot, avec le mot écrit (Critique, Élevée) ; le chiffre reste en text-ink.",
+          "Statuts du workflow d'alerte avec leurs couleurs status-* en point, libellé en text-ink.",
+          "Identifiants, IP, hash et horodatages en font-mono text-caption text-ink-soft.",
+          "Fond bg-base partout ; fond technique (grille et halos) seulement sur l'ouverture et la clôture."
+        ],
+        "dont": [
+          "Pas de titre de diapo sous 88px ni de corps sous 32px : la diapo se lit à trois mètres.",
+          "Pas de fond de diapo teinté par la sévérité, même pour annoncer un incident.",
+          "Pas de rouge, orange, ambre ou beige décoratifs : réservés à la sévérité.",
+          "Pas de bouton ni de bloc en couleur de marque : l'accent est l'encre.",
+          "Pas de capture d'écran illisible : recadrer sur la zone qui prouve, ou la remplacer par le chiffre.",
+          "Pas de font-accent : Kufam est réservée au wordmark ARTEFACT. Le mot-clé d’un titre passe en text-accent, pas dans une autre police."
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+# Bibliothèque de DNA
+
+23 DNA. Généré par `npm run catalog` (Naos) : ne pas modifier à la main. Galerie visuelle : [index.html](index.html).
+
+## artefact
+
+| DNA | Thème | presentation | product-desktop | website | Polices | Résumé |
+|---|---|:-:|:-:|:-:|---|---|
+| [Artefact Dark](artefact/artefact-dark/dna.json) `artefact-dark` | sombre | ● | ● | ● | Jost | Le thème principal d’ARTEFACT : un bleu-gris profond pour des analystes SOC qui y passent leur journée, une hiérarchie dense en Jost, la criticité portée par des points et des badges, jamais par les fonds. |
+| [Artefact Light](artefact/artefact-light/dna.json) `artefact-light` | clair | ● | ● | ● | Jost | Le thème clair d’ARTEFACT, « éditorial froid » : blanc pur et blanc bleuté, encre quasi-noire, bordures recalibrées à 3:1, la même hiérarchie dense en Jost et la criticité portée par des points et des badges. |
+| [Artefact Pillar](artefact/artefact-pillar/dna.json) `artefact-pillar` | sombre | ● | ● | ● | Inter Tight | La structure Room & Pillar aux couleurs d'ARTEFACT : noir graphite, sections papier, un indigo lumineux pour l'unique action, dégradé de marque rouge → prune → indigo porté par une sphère (l'icône) ; grotesque gras ultra-serré en titres géants, labels mono en capitales. En produit : console graphite à angles vifs, labels mono et grilles filaires. |
+| [Artefact Plume](artefact/artefact-plume/dna.json) `artefact-plume` | clair | ● | ● | ● | Manrope | La structure Plumeform aux couleurs d'ARTEFACT : blanc lavande, encre indigo-noir, action indigo profond, lavande pâle en halos, dégradé de marque rouge → prune → indigo réservé au logo, au hero nuit et au bandeau final ; Manrope très gras serré, pilules et grands arrondis. |
+
+## base
+
+| DNA | Thème | presentation | product-desktop | website | Polices | Résumé |
+|---|---|:-:|:-:|:-:|---|---|
+| [Field Notes](base/field-notes/dna.json) `field-notes` | clair | ● | ● | ● | Bricolage Grotesque / Plus Jakarta Sans | Chaleureux et tactile, comme un carnet de marché : terracotta, vert sauge, typographie ronde et généreuse. |
+| [Gallery Noir](base/gallery-noir/dna.json) `gallery-noir` | sombre | ● | ● | ● | Cormorant Garamond / Hanken Grotesk | Une galerie après la fermeture : noir chaud, serif de caractère, beaucoup de vide et des images qui portent tout. |
+| [Graphite Console](base/graphite-console/dna.json) `graphite-console` | sombre | ● | ● | ● | Manrope | Un outil sombre et dense, pensé pour les gens qui le gardent ouvert toute la journée : précision, raccourcis clavier, zéro décoration gratuite. |
+| [Linen Ledger](base/linen-ledger/dna.json) `linen-ledger` | clair | ● | ● | ● | Instrument Serif / Instrument Sans | La sobriété d'un registre bien tenu : papier chaud, titres en serif, vert profond. Inspire confiance sans être austère. |
+| [Poster Block](base/poster-block/dna.json) `poster-block` | clair | ● | ● | ● | Archivo Black / Archivo | L'énergie d'une affiche imprimée : aplats francs, contours noirs épais, ombres décalées dures et typographie massive. |
+| [Signal Clinic](base/signal-clinic/dna.json) `signal-clinic` | clair | ● | ● | ● | Figtree | Clair, apaisé, lisible par tout le monde : un bleu-vert soignant, de grandes cibles tactiles et une hiérarchie sans ambiguïté. |
+
+## inspirations
+
+| DNA | Thème | presentation | product-desktop | website | Polices | Résumé |
+|---|---|:-:|:-:|:-:|---|---|
+| [Better Stack Dark](inspirations/betterstack-dark/dna.json) `betterstack-dark` | sombre | ● | ● | ● | Inter | Le système visuel de Better Stack : nuit bleu-marine presque noire (bg-base) pour la landing et l'authentification, ardoise marine plus claire (bg-surface) pour l'onboarding et l'app, un seul indigo plein pour l'action, Inter semi-grasse, titres d'étape bicolores (mots gris-lavande, mot-clé en blanc), tuiles sélectionnables à pastille cochée. En produit : rail d'icônes nuit + barre de section ardoise, tableaux en cartes bordées, checklist d'onboarding à cercles pointillés. |
+| [ClickUp Light](inspirations/clickup-light/dna.json) `clickup-light` | clair | ● | ● | ● | Plus Jakarta Sans / Inter | Le système visuel de clickup.com : fond blanc, cartes très claires, titres Plus Jakarta Sans gras et serrés, un bleu nuit pour l'action et un bleu vif en touche. |
+| [Cobalt Night](inspirations/cobalt-night/dna.json) `cobalt-night` | sombre | ● | ● | ● | Geist | Un produit sérieux qui ose : noir profond, titres géants, un mot en serif au milieu de la grotesque, et des aplats cobalt pour les preuves. |
+| [Daylight Product](inspirations/daylight-product/dna.json) `daylight-product` | clair | ● | ● | ● | Inter Tight / Inter | Le site produit sûr de lui : fond blanc, grands titres grotesques serrés, un seul bleu franc et beaucoup d'air. La hiérarchie fait tout le travail. |
+| [Garden Serif](inspirations/garden-serif/dna.json) `garden-serif` | clair | ● | ● | ● | Newsreader / Hanken Grotesk | Une tech qui a de la poésie : blanc cassé, serif légère et élégante, bleu céruléen, et de grandes images-paysages où le texte flotte sur du verre dépoli. |
+| [Height Light](inspirations/height-light/dna.json) `height-light` | clair | ● | ● | ● | Inter | Le système visuel de Height : blanc pur, encre graphite, Inter, un seul bouton plein noir pour l'action, et la couleur réservée au logo et à quelques mots-clés en arc-en-ciel lettre par lettre (vert, ambre, rose, magenta, violet, bleu). Authentification en carte flottante à deux tons (haut blanc, bas gris clair). En produit : barre latérale graphite sombre contre un plan de travail blanc, documents de tâche aux titres généreux, chips d'attributs teintés et panneau de discussion avec agent IA. |
+| [Lilac Dusk](inspirations/lilac-dusk/dna.json) `lilac-dusk` | sombre | ● | ● | ● | Hanken Grotesk | Fintech nocturne et feutrée inspirée de Fey : noir bleuté profond, titres centrés en grotesque semi-grasse traversés d'un dégradé lilas → abricot, halo de lumière diffus derrière l'unique bloc d'action, pilules claires, keycaps inline et palette de commandes ⌘K. En produit : panneaux sombres très arrondis, données en ticks vert/rose, dock flottant en bas d'écran. |
+| [Linear Dark](inspirations/linear-dark/dna.json) `linear-dark` | sombre | ● | ● | ● | Inter | Le système visuel de linear.app en sombre : noir presque pur, grotesque Inter medium très serrée en titres géants alignés à gauche, gris froids pour tout le reste, un bouton clair comme seule action et un indigo réservé à de minuscules signaux. En produit : trois volets séparés par des filets, icônes d'état circulaires, propriétés en liste, panneau d'agent flottant en mono. |
+| [Linear Light](inspirations/linear-light/dna.json) `linear-light` | clair | ● | ● | ● | Inter | Le système visuel de Linear en clair, tel qu'on le voit à l'inscription, à l'onboarding et dans l'app : gris très pâle, encre graphite, Inter medium sobre, une seule action pleine en pilule indigo, cartes blanches à ombre douce, étapes centrées dans une colonne étroite avec pastilles de progression. En produit : barre latérale posée sur le fond, zone de travail en panneau blanc inset, composeur « Ask … » et cartes d'exemples. |
+| [Plumeform](inspirations/plumeform/dna.json) `plumeform` | clair | ● | ● | ● | Manrope | SaaS chaleureux et soigné : crème cassé, encre vert-noir, sarcelle profonde pour l'action, menthe pâle en halos diffus, Manrope très gras serré, tout en pilules et grands arrondis, ouverture sur un hero vert nuit. |
+| [Room & Pillar](inspirations/room-and-pillar/dna.json) `room-and-pillar` | sombre | ● | ● | ● | Inter Tight | Capital-risque sombre et éditorial : noir graphite bleuté, sections papier gris lavande, un seul jaune-citron électrique pour l'action, grotesque gras ultra-serré en titres géants, labels mono en capitales, rendus 3D monochromes. |
+| [Sui Gradient](inspirations/sui-gradient/dna.json) `sui-gradient` | sombre | ● | ● | ● | Inter | Base noire et grotesque fine inspirées de sui.io, réchauffées par un dégradé rouge, violet, bleu réservé au moment fort. |
+| [Sui Original](inspirations/sui-original/dna.json) `sui-original` | sombre | ● | ● | ● | Inter | Le système visuel de sui.io tel que scanné : noir profond, grotesque fine et très serrée, un seul bleu franc, conteneurs à angles droits. |

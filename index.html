@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bibliothèque de DNA · Naos</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600&amp;family=Kufam:wght@400&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&amp;family=Hanken+Grotesk:wght@300;400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:wght@400&amp;family=Instrument+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Black:wght@400&amp;family=Archivo:wght@400;500;700&amp;family=Space+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Inter:wght@400;500&amp;family=Sometype+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500&amp;family=Instrument+Serif:wght@400&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:wght@300;400&amp;family=Hanken+Grotesk:wght@400;500&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+:root{--bg:#f6f6f4;--card:#fff;--ink:#17171a;--muted:#62626b;--line:#e2e2de;--on:#17171a;--on-ink:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#121214;--card:#1b1b1f;--ink:#f1f1f3;--muted:#a0a0aa;--line:#2c2c32;--on:#f1f1f3;--on-ink:#121214}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+header,main{max-width:1400px;margin:0 auto;padding:24px 16px}header h1{margin:0;font-size:28px;letter-spacing:-.02em}
+header p{margin:4px 0 0;color:var(--muted)}nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+nav a{color:var(--ink);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:13px}
+.gaps,.errors{margin-top:16px;padding:12px 16px;border:1px solid var(--line);border-radius:10px;background:var(--card);font-size:13px}
+.errors{border-color:#c0392b}.gaps b,.errors b{display:block;margin-bottom:4px}
+h2{margin:32px 0 12px;font-size:20px;display:flex;gap:10px;align-items:baseline}h2 small{color:var(--muted);font-weight:400;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.pv{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;background:var(--line)}.pv img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.pv.empty{display:grid;place-items:center;aspect-ratio:16/10;color:var(--muted);font-size:12px;background:var(--bg)}
+.body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}h3{margin:0;font-size:22px;line-height:1.1}
+.meta,.file{margin:0;color:var(--muted);font-size:12px}.meta code{color:var(--ink)}.file a{color:var(--muted)}
+.sw{display:flex;gap:3px;flex-wrap:wrap}.sw i{width:22px;height:22px;border-radius:5px;box-shadow:inset 0 0 0 1px rgba(127,127,127,.35)}.sw.extra i{width:14px;height:14px;border-radius:50%}
+.sum{margin:0;font-size:13px;flex:1}.modes{display:flex;gap:6px;flex-wrap:wrap}
+.mode{font-size:11px;padding:2px 8px;border-radius:999px;border:1px solid var(--line)}.mode.on{background:var(--on);color:var(--on-ink);border-color:var(--on)}.mode.off{color:var(--muted);text-decoration:line-through}
+</style>
+</head>
+<body>
+<header>
+  <h1>Bibliothèque de DNA</h1>
+  <p>23 DNA · 3 familles · Présentation, Produit desktop, Site web · générée le 21 octobre 2026 à 15:28</p>
+  <nav><a href="#artefact">artefact (4)</a><a href="#base">base (6)</a><a href="#inspirations">inspirations (13)</a></nav>
+  
+  
+</header>
+<main>
+<h2 id="artefact">artefact <small>4 DNA</small></h2>
+<div class="grid">
+<article class="card">
+  <div class="pv"><a href="artefact/artefact-dark/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="artefact/artefact-dark/previews/product-desktop.jpg" alt="Aperçu Artefact Dark en mode Produit desktop" loading="lazy"></a><a href="artefact/artefact-dark/previews/website.jpg" title="Aperçu Site web"><img src="artefact/artefact-dark/previews/website.jpg" alt="Aperçu Artefact Dark en mode Site web" loading="lazy"></a><a href="artefact/artefact-dark/previews/presentation.jpg" title="Aperçu Présentation"><img src="artefact/artefact-dark/previews/presentation.jpg" alt="Aperçu Artefact Dark en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Jost',system-ui,sans-serif">Artefact Dark</h3>
+    <p class="meta"><code>artefact-dark</code> · sombre · Jost</p>
+    <div class="sw"><i style="background:#181C23" title="base #181C23"></i><i style="background:#1B1E24" title="surface #1B1E24"></i><i style="background:#1E232C" title="raised #1E232C"></i><i style="background:#2E3441" title="line #2E3441"></i><i style="background:#FAFAFA" title="ink #FAFAFA"></i><i style="background:#9498A2" title="muted #9498A2"></i><i style="background:#FAFAFA" title="accent #FAFAFA"></i><i style="background:#CC6BFF" title="accent2 #CC6BFF"></i><i style="background:#27CC44" title="success #27CC44"></i><i style="background:#FFA44E" title="warning #FFA44E"></i><i style="background:#FE5A74" title="danger #FE5A74"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#2F6AFF" title="accent-ui #2F6AFF"></i><i style="background:#CCCED1" title="ink-soft #CCCED1"></i><i style="background:#FF577B" title="sev-critical #FF577B"></i><i style="background:#FF8947" title="sev-high #FF8947"></i><i style="background:#EDAB00" title="sev-medium #EDAB00"></i><i style="background:#FDB171" title="sev-low #FDB171"></i><i style="background:#9298A4" title="status-pending #9298A4"></i><i style="background:#5D96FF" title="status-investigation #5D96FF"></i><i style="background:#00ADBA" title="status-remediation #00ADBA"></i><i style="background:#36D261" title="status-resolved #36D261"></i><i style="background:#FA6A57" title="status-incident #FA6A57"></i></div>
+    <p class="sum">Le thème principal d’ARTEFACT : un bleu-gris profond pour des analystes SOC qui y passent leur journée, une hiérarchie dense en Jost, la criticité portée par des points et des badges, jamais par les fonds.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="artefact/artefact-dark/dna.json">artefact/artefact-dark/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="artefact/artefact-light/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="artefact/artefact-light/previews/product-desktop.jpg" alt="Aperçu Artefact Light en mode Produit desktop" loading="lazy"></a><a href="artefact/artefact-light/previews/website.jpg" title="Aperçu Site web"><img src="artefact/artefact-light/previews/website.jpg" alt="Aperçu Artefact Light en mode Site web" loading="lazy"></a><a href="artefact/artefact-light/previews/presentation.jpg" title="Aperçu Présentation"><img src="artefact/artefact-light/previews/presentation.jpg" alt="Aperçu Artefact Light en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Jost',system-ui,sans-serif">Artefact Light</h3>
+    <p class="meta"><code>artefact-light</code> · clair · Jost</p>
+    <div class="sw"><i style="background:#FFFFFF" title="base #FFFFFF"></i><i style="background:#F6F7F9" title="surface #F6F7F9"></i><i style="background:#ECEEF3" title="raised #ECEEF3"></i><i style="background:#82868F" title="line #82868F"></i><i style="background:#040508" title="ink #040508"></i><i style="background:#646974" title="muted #646974"></i><i style="background:#040508" title="accent #040508"></i><i style="background:#AD46FF" title="accent2 #AD46FF"></i><i style="background:#007201" title="success #007201"></i><i style="background:#90561C" title="warning #90561C"></i><i style="background:#C1001C" title="danger #C1001C"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#1447E6" title="accent-ui #1447E6"></i><i style="background:#313337" title="ink-soft #313337"></i><i style="background:#C00030" title="sev-critical #C00030"></i><i style="background:#BB1D00" title="sev-high #BB1D00"></i><i style="background:#8D5600" title="sev-medium #8D5600"></i><i style="background:#894C06" title="sev-low #894C06"></i><i style="background:#454D5E" title="status-pending #454D5E"></i><i style="background:#072DAA" title="status-investigation #072DAA"></i><i style="background:#00636F" title="status-remediation #00636F"></i><i style="background:#00730A" title="status-resolved #00730A"></i><i style="background:#A52B1E" title="status-incident #A52B1E"></i></div>
+    <p class="sum">Le thème clair d’ARTEFACT, « éditorial froid » : blanc pur et blanc bleuté, encre quasi-noire, bordures recalibrées à 3:1, la même hiérarchie dense en Jost et la criticité portée par des points et des badges.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="artefact/artefact-light/dna.json">artefact/artefact-light/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="artefact/artefact-pillar/previews/website.jpg" title="Aperçu Site web"><img src="artefact/artefact-pillar/previews/website.jpg" alt="Aperçu Artefact Pillar en mode Site web" loading="lazy"></a><a href="artefact/artefact-pillar/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="artefact/artefact-pillar/previews/product-desktop.jpg" alt="Aperçu Artefact Pillar en mode Produit desktop" loading="lazy"></a><a href="artefact/artefact-pillar/previews/presentation.jpg" title="Aperçu Présentation"><img src="artefact/artefact-pillar/previews/presentation.jpg" alt="Aperçu Artefact Pillar en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter Tight',system-ui,sans-serif">Artefact Pillar</h3>
+    <p class="meta"><code>artefact-pillar</code> · sombre · Inter Tight</p>
+    <div class="sw"><i style="background:#131419" title="base #131419"></i><i style="background:#1F2025" title="surface #1F2025"></i><i style="background:#2A2B2F" title="raised #2A2B2F"></i><i style="background:#323338" title="line #323338"></i><i style="background:#F2F2F6" title="ink #F2F2F6"></i><i style="background:#C2C2DD" title="muted #C2C2DD"></i><i style="background:#8F8AFF" title="accent #8F8AFF"></i><i style="background:#C9A7E8" title="accent2 #C9A7E8"></i><i style="background:#4CC38A" title="success #4CC38A"></i><i style="background:#E8C547" title="warning #E8C547"></i><i style="background:#EF7270" title="danger #EF7270"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#F2F2F6" title="paper #F2F2F6"></i><i style="background:#DBDBE9" title="paper-soft #DBDBE9"></i><i style="background:#E2333A" title="brand-red #E2333A"></i><i style="background:#B2559A" title="brand-plum #B2559A"></i><i style="background:#6A64E0" title="brand-indigo #6A64E0"></i><i style="background:#2F6AFF" title="accent-ui #2F6AFF"></i><i style="background:#CCCED1" title="ink-soft #CCCED1"></i><i style="background:#FF577B" title="sev-critical #FF577B"></i><i style="background:#FF8947" title="sev-high #FF8947"></i><i style="background:#EDAB00" title="sev-medium #EDAB00"></i><i style="background:#FDB171" title="sev-low #FDB171"></i><i style="background:#A4A9B4" title="status-pending #A4A9B4"></i><i style="background:#5D96FF" title="status-investigation #5D96FF"></i><i style="background:#00ADBA" title="status-remediation #00ADBA"></i><i style="background:#36D261" title="status-resolved #36D261"></i><i style="background:#FA6A57" title="status-incident #FA6A57"></i></div>
+    <p class="sum">La structure Room &amp; Pillar aux couleurs d'ARTEFACT : noir graphite, sections papier, un indigo lumineux pour l'unique action, dégradé de marque rouge → prune → indigo porté par une sphère (l'icône) ; grotesque gras ultra-serré en titres géants, labels mono en capitales. En produit : console graphite à angles vifs, labels mono et grilles filaires.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="artefact/artefact-pillar/dna.json">artefact/artefact-pillar/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="artefact/artefact-plume/previews/website.jpg" title="Aperçu Site web"><img src="artefact/artefact-plume/previews/website.jpg" alt="Aperçu Artefact Plume en mode Site web" loading="lazy"></a><a href="artefact/artefact-plume/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="artefact/artefact-plume/previews/product-desktop.jpg" alt="Aperçu Artefact Plume en mode Produit desktop" loading="lazy"></a><a href="artefact/artefact-plume/previews/presentation.jpg" title="Aperçu Présentation"><img src="artefact/artefact-plume/previews/presentation.jpg" alt="Aperçu Artefact Plume en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Manrope',system-ui,sans-serif">Artefact Plume</h3>
+    <p class="meta"><code>artefact-plume</code> · clair · Manrope</p>
+    <div class="sw"><i style="background:#FAF9FC" title="base #FAF9FC"></i><i style="background:#F4F2F8" title="surface #F4F2F8"></i><i style="background:#EEEBF4" title="raised #EEEBF4"></i><i style="background:#E2DFEA" title="line #E2DFEA"></i><i style="background:#17142B" title="ink #17142B"></i><i style="background:#4A4760" title="muted #4A4760"></i><i style="background:#25208A" title="accent #25208A"></i><i style="background:#E6E3F7" title="accent2 #E6E3F7"></i><i style="background:#2B6C47" title="success #2B6C47"></i><i style="background:#815A1E" title="warning #815A1E"></i><i style="background:#A73D2E" title="danger #A73D2E"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#0E0B24" title="night #0E0B24"></i><i style="background:#19143A" title="night-raised #19143A"></i><i style="background:#C81E22" title="brand-red #C81E22"></i><i style="background:#7D2160" title="brand-plum #7D2160"></i><i style="background:#25208A" title="brand-indigo #25208A"></i></div>
+    <p class="sum">La structure Plumeform aux couleurs d'ARTEFACT : blanc lavande, encre indigo-noir, action indigo profond, lavande pâle en halos, dégradé de marque rouge → prune → indigo réservé au logo, au hero nuit et au bandeau final ; Manrope très gras serré, pilules et grands arrondis.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="artefact/artefact-plume/dna.json">artefact/artefact-plume/dna.json</a></p>
+  </div>
+</article>
+</div>
+<h2 id="base">base <small>6 DNA</small></h2>
+<div class="grid">
+<article class="card">
+  <div class="pv"><a href="base/field-notes/previews/website.jpg" title="Aperçu Site web"><img src="base/field-notes/previews/website.jpg" alt="Aperçu Field Notes en mode Site web" loading="lazy"></a><a href="base/field-notes/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="base/field-notes/previews/product-desktop.jpg" alt="Aperçu Field Notes en mode Produit desktop" loading="lazy"></a><a href="base/field-notes/previews/presentation.jpg" title="Aperçu Présentation"><img src="base/field-notes/previews/presentation.jpg" alt="Aperçu Field Notes en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Bricolage Grotesque',system-ui,sans-serif">Field Notes</h3>
+    <p class="meta"><code>field-notes</code> · clair · Bricolage Grotesque / Plus Jakarta Sans</p>
+    <div class="sw"><i style="background:#FBF6EF" title="base #FBF6EF"></i><i style="background:#FFFFFF" title="surface #FFFFFF"></i><i style="background:#F3EADD" title="raised #F3EADD"></i><i style="background:#E6DACA" title="line #E6DACA"></i><i style="background:#2A2019" title="ink #2A2019"></i><i style="background:#74655A" title="muted #74655A"></i><i style="background:#B4502A" title="accent #B4502A"></i><i style="background:#5B7A4C" title="accent2 #5B7A4C"></i><i style="background:#456E35" title="success #456E35"></i><i style="background:#835B1A" title="warning #835B1A"></i><i style="background:#AF382D" title="danger #AF382D"></i></div>
+    <p class="sum">Chaleureux et tactile, comme un carnet de marché : terracotta, vert sauge, typographie ronde et généreuse.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="base/field-notes/dna.json">base/field-notes/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="base/gallery-noir/previews/website.jpg" title="Aperçu Site web"><img src="base/gallery-noir/previews/website.jpg" alt="Aperçu Gallery Noir en mode Site web" loading="lazy"></a><a href="base/gallery-noir/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="base/gallery-noir/previews/product-desktop.jpg" alt="Aperçu Gallery Noir en mode Produit desktop" loading="lazy"></a><a href="base/gallery-noir/previews/presentation.jpg" title="Aperçu Présentation"><img src="base/gallery-noir/previews/presentation.jpg" alt="Aperçu Gallery Noir en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Cormorant Garamond',system-ui,sans-serif">Gallery Noir</h3>
+    <p class="meta"><code>gallery-noir</code> · sombre · Cormorant Garamond / Hanken Grotesk</p>
+    <div class="sw"><i style="background:#0C0B0A" title="base #0C0B0A"></i><i style="background:#151413" title="surface #151413"></i><i style="background:#1E1C1A" title="raised #1E1C1A"></i><i style="background:#2E2B27" title="line #2E2B27"></i><i style="background:#F1EDE6" title="ink #F1EDE6"></i><i style="background:#9C968C" title="muted #9C968C"></i><i style="background:#D6B887" title="accent #D6B887"></i><i style="background:#7F9184" title="accent2 #7F9184"></i><i style="background:#8DB38B" title="success #8DB38B"></i><i style="background:#D9A85B" title="warning #D9A85B"></i><i style="background:#D9796B" title="danger #D9796B"></i></div>
+    <p class="sum">Une galerie après la fermeture : noir chaud, serif de caractère, beaucoup de vide et des images qui portent tout.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="base/gallery-noir/dna.json">base/gallery-noir/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="base/graphite-console/previews/website.jpg" title="Aperçu Site web"><img src="base/graphite-console/previews/website.jpg" alt="Aperçu Graphite Console en mode Site web" loading="lazy"></a><a href="base/graphite-console/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="base/graphite-console/previews/product-desktop.jpg" alt="Aperçu Graphite Console en mode Produit desktop" loading="lazy"></a><a href="base/graphite-console/previews/presentation.jpg" title="Aperçu Présentation"><img src="base/graphite-console/previews/presentation.jpg" alt="Aperçu Graphite Console en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Manrope',system-ui,sans-serif">Graphite Console</h3>
+    <p class="meta"><code>graphite-console</code> · sombre · Manrope</p>
+    <div class="sw"><i style="background:#0D0F12" title="base #0D0F12"></i><i style="background:#15181D" title="surface #15181D"></i><i style="background:#1C2027" title="raised #1C2027"></i><i style="background:#272C35" title="line #272C35"></i><i style="background:#E8EAED" title="ink #E8EAED"></i><i style="background:#8C93A0" title="muted #8C93A0"></i><i style="background:#F2A93B" title="accent #F2A93B"></i><i style="background:#5EC2D6" title="accent2 #5EC2D6"></i><i style="background:#4CC38A" title="success #4CC38A"></i><i style="background:#E8C547" title="warning #E8C547"></i><i style="background:#EF6461" title="danger #EF6461"></i></div>
+    <p class="sum">Un outil sombre et dense, pensé pour les gens qui le gardent ouvert toute la journée : précision, raccourcis clavier, zéro décoration gratuite.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="base/graphite-console/dna.json">base/graphite-console/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="base/linen-ledger/previews/website.jpg" title="Aperçu Site web"><img src="base/linen-ledger/previews/website.jpg" alt="Aperçu Linen Ledger en mode Site web" loading="lazy"></a><a href="base/linen-ledger/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="base/linen-ledger/previews/product-desktop.jpg" alt="Aperçu Linen Ledger en mode Produit desktop" loading="lazy"></a><a href="base/linen-ledger/previews/presentation.jpg" title="Aperçu Présentation"><img src="base/linen-ledger/previews/presentation.jpg" alt="Aperçu Linen Ledger en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Instrument Serif',system-ui,sans-serif">Linen Ledger</h3>
+    <p class="meta"><code>linen-ledger</code> · clair · Instrument Serif / Instrument Sans</p>
+    <div class="sw"><i style="background:#F6F4EE" title="base #F6F4EE"></i><i style="background:#FFFFFF" title="surface #FFFFFF"></i><i style="background:#EFECE3" title="raised #EFECE3"></i><i style="background:#E1DDD2" title="line #E1DDD2"></i><i style="background:#1D1C19" title="ink #1D1C19"></i><i style="background:#67635A" title="muted #67635A"></i><i style="background:#1F5A46" title="accent #1F5A46"></i><i style="background:#B8892B" title="accent2 #B8892B"></i><i style="background:#2C6D46" title="success #2C6D46"></i><i style="background:#825A1D" title="warning #825A1D"></i><i style="background:#A83D2D" title="danger #A83D2D"></i></div>
+    <p class="sum">La sobriété d'un registre bien tenu : papier chaud, titres en serif, vert profond. Inspire confiance sans être austère.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="base/linen-ledger/dna.json">base/linen-ledger/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="base/poster-block/previews/website.jpg" title="Aperçu Site web"><img src="base/poster-block/previews/website.jpg" alt="Aperçu Poster Block en mode Site web" loading="lazy"></a><a href="base/poster-block/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="base/poster-block/previews/product-desktop.jpg" alt="Aperçu Poster Block en mode Produit desktop" loading="lazy"></a><a href="base/poster-block/previews/presentation.jpg" title="Aperçu Présentation"><img src="base/poster-block/previews/presentation.jpg" alt="Aperçu Poster Block en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Archivo Black',system-ui,sans-serif">Poster Block</h3>
+    <p class="meta"><code>poster-block</code> · clair · Archivo Black / Archivo</p>
+    <div class="sw"><i style="background:#FFF6E3" title="base #FFF6E3"></i><i style="background:#FFFFFF" title="surface #FFFFFF"></i><i style="background:#FFE7B0" title="raised #FFE7B0"></i><i style="background:#141414" title="line #141414"></i><i style="background:#141414" title="ink #141414"></i><i style="background:#4D4943" title="muted #4D4943"></i><i style="background:#C9361E" title="accent #C9361E"></i><i style="background:#2B55E6" title="accent2 #2B55E6"></i><i style="background:#1B7143" title="success #1B7143"></i><i style="background:#7E5E0A" title="warning #7E5E0A"></i><i style="background:#A31F14" title="danger #A31F14"></i></div>
+    <p class="sum">L'énergie d'une affiche imprimée : aplats francs, contours noirs épais, ombres décalées dures et typographie massive.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="base/poster-block/dna.json">base/poster-block/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="base/signal-clinic/previews/website.jpg" title="Aperçu Site web"><img src="base/signal-clinic/previews/website.jpg" alt="Aperçu Signal Clinic en mode Site web" loading="lazy"></a><a href="base/signal-clinic/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="base/signal-clinic/previews/product-desktop.jpg" alt="Aperçu Signal Clinic en mode Produit desktop" loading="lazy"></a><a href="base/signal-clinic/previews/presentation.jpg" title="Aperçu Présentation"><img src="base/signal-clinic/previews/presentation.jpg" alt="Aperçu Signal Clinic en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Figtree',system-ui,sans-serif">Signal Clinic</h3>
+    <p class="meta"><code>signal-clinic</code> · clair · Figtree</p>
+    <div class="sw"><i style="background:#F2F6F7" title="base #F2F6F7"></i><i style="background:#FFFFFF" title="surface #FFFFFF"></i><i style="background:#E7F0F2" title="raised #E7F0F2"></i><i style="background:#D5E2E5" title="line #D5E2E5"></i><i style="background:#0E2830" title="ink #0E2830"></i><i style="background:#52707A" title="muted #52707A"></i><i style="background:#0B6E78" title="accent #0B6E78"></i><i style="background:#E9845F" title="accent2 #E9845F"></i><i style="background:#256F4C" title="success #256F4C"></i><i style="background:#7E5C1B" title="warning #7E5C1B"></i><i style="background:#A63E39" title="danger #A63E39"></i></div>
+    <p class="sum">Clair, apaisé, lisible par tout le monde : un bleu-vert soignant, de grandes cibles tactiles et une hiérarchie sans ambiguïté.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="base/signal-clinic/dna.json">base/signal-clinic/dna.json</a></p>
+  </div>
+</article>
+</div>
+<h2 id="inspirations">inspirations <small>13 DNA</small></h2>
+<div class="grid">
+<article class="card">
+  <div class="pv"><a href="inspirations/betterstack-dark/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/betterstack-dark/previews/website.jpg" alt="Aperçu Better Stack Dark en mode Site web" loading="lazy"></a><a href="inspirations/betterstack-dark/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/betterstack-dark/previews/product-desktop.jpg" alt="Aperçu Better Stack Dark en mode Produit desktop" loading="lazy"></a><a href="inspirations/betterstack-dark/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/betterstack-dark/previews/presentation.jpg" alt="Aperçu Better Stack Dark en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter',system-ui,sans-serif">Better Stack Dark</h3>
+    <p class="meta"><code>betterstack-dark</code> · sombre · Inter</p>
+    <div class="sw"><i style="background:#0B0D18" title="base #0B0D18"></i><i style="background:#1D2231" title="surface #1D2231"></i><i style="background:#262C3E" title="raised #262C3E"></i><i style="background:#363C52" title="line #363C52"></i><i style="background:#F3F4F8" title="ink #F3F4F8"></i><i style="background:#9CA2B8" title="muted #9CA2B8"></i><i style="background:#5B63D6" title="accent #5B63D6"></i><i style="background:#7B83EE" title="accent2 #7B83EE"></i><i style="background:#3FB97B" title="success #3FB97B"></i><i style="background:#E5B54A" title="warning #E5B54A"></i><i style="background:#F47A7A" title="danger #F47A7A"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#8E95F2" title="focus #8E95F2"></i><i style="background:#7B83EE" title="beam #7B83EE"></i><i style="background:#7B83EE" title="check #7B83EE"></i><i style="background:#F47A7A" title="ongoing #F47A7A"></i></div>
+    <p class="sum">Le système visuel de Better Stack : nuit bleu-marine presque noire (bg-base) pour la landing et l'authentification, ardoise marine plus claire (bg-surface) pour l'onboarding et l'app, un seul indigo plein pour l'action, Inter semi-grasse, titres d'étape bicolores (mots gris-lavande, mot-clé en blanc), tuiles sélectionnables à pastille cochée. En produit : rail d'icônes nuit + barre de section ardoise, tableaux en cartes bordées, checklist d'onboarding à cercles pointillés.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/betterstack-dark/dna.json">inspirations/betterstack-dark/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/clickup-light/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/clickup-light/previews/website.jpg" alt="Aperçu ClickUp Light en mode Site web" loading="lazy"></a><a href="inspirations/clickup-light/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/clickup-light/previews/product-desktop.jpg" alt="Aperçu ClickUp Light en mode Produit desktop" loading="lazy"></a><a href="inspirations/clickup-light/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/clickup-light/previews/presentation.jpg" alt="Aperçu ClickUp Light en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Plus Jakarta Sans',system-ui,sans-serif">ClickUp Light</h3>
+    <p class="meta"><code>clickup-light</code> · clair · Plus Jakarta Sans / Inter</p>
+    <div class="sw"><i style="background:#FFFFFF" title="base #FFFFFF"></i><i style="background:#F8F9FA" title="surface #F8F9FA"></i><i style="background:#F3F3F4" title="raised #F3F3F4"></i><i style="background:#E1E2E4" title="line #E1E2E4"></i><i style="background:#090C1D" title="ink #090C1D"></i><i style="background:#646464" title="muted #646464"></i><i style="background:#24223E" title="accent #24223E"></i><i style="background:#0091FF" title="accent2 #0091FF"></i><i style="background:#276645" title="success #276645"></i><i style="background:#77521E" title="warning #77521E"></i><i style="background:#9C392C" title="danger #9C392C"></i></div>
+    <p class="sum">Le système visuel de clickup.com : fond blanc, cartes très claires, titres Plus Jakarta Sans gras et serrés, un bleu nuit pour l'action et un bleu vif en touche.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/clickup-light/dna.json">inspirations/clickup-light/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/cobalt-night/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/cobalt-night/previews/website.jpg" alt="Aperçu Cobalt Night en mode Site web" loading="lazy"></a><a href="inspirations/cobalt-night/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/cobalt-night/previews/presentation.jpg" alt="Aperçu Cobalt Night en mode Présentation" loading="lazy"></a><a href="inspirations/cobalt-night/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/cobalt-night/previews/product-desktop.jpg" alt="Aperçu Cobalt Night en mode Produit desktop" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Geist',system-ui,sans-serif">Cobalt Night</h3>
+    <p class="meta"><code>cobalt-night</code> · sombre · Geist</p>
+    <div class="sw"><i style="background:#0A0A0B" title="base #0A0A0B"></i><i style="background:#141416" title="surface #141416"></i><i style="background:#1C1C1F" title="raised #1C1C1F"></i><i style="background:#2A2A2E" title="line #2A2A2E"></i><i style="background:#F7F7F8" title="ink #F7F7F8"></i><i style="background:#A0A0A8" title="muted #A0A0A8"></i><i style="background:#1F45D1" title="accent #1F45D1"></i><i style="background:#A66BFF" title="accent2 #A66BFF"></i><i style="background:#4CC38A" title="success #4CC38A"></i><i style="background:#E8C547" title="warning #E8C547"></i><i style="background:#F26D64" title="danger #F26D64"></i></div>
+    <p class="sum">Un produit sérieux qui ose : noir profond, titres géants, un mot en serif au milieu de la grotesque, et des aplats cobalt pour les preuves.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/cobalt-night/dna.json">inspirations/cobalt-night/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/daylight-product/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/daylight-product/previews/website.jpg" alt="Aperçu Daylight Product en mode Site web" loading="lazy"></a><a href="inspirations/daylight-product/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/daylight-product/previews/presentation.jpg" alt="Aperçu Daylight Product en mode Présentation" loading="lazy"></a><a href="inspirations/daylight-product/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/daylight-product/previews/product-desktop.jpg" alt="Aperçu Daylight Product en mode Produit desktop" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter Tight',system-ui,sans-serif">Daylight Product</h3>
+    <p class="meta"><code>daylight-product</code> · clair · Inter Tight / Inter</p>
+    <div class="sw"><i style="background:#FFFFFF" title="base #FFFFFF"></i><i style="background:#F5F3F0" title="surface #F5F3F0"></i><i style="background:#EEEBE7" title="raised #EEEBE7"></i><i style="background:#E5E2DD" title="line #E5E2DD"></i><i style="background:#0B0B0A" title="ink #0B0B0A"></i><i style="background:#696764" title="muted #696764"></i><i style="background:#2D5BE3" title="accent #2D5BE3"></i><i style="background:#E8813A" title="accent2 #E8813A"></i><i style="background:#1D6F44" title="success #1D6F44"></i><i style="background:#805A13" title="warning #805A13"></i><i style="background:#AB382B" title="danger #AB382B"></i></div>
+    <p class="sum">Le site produit sûr de lui : fond blanc, grands titres grotesques serrés, un seul bleu franc et beaucoup d'air. La hiérarchie fait tout le travail.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/daylight-product/dna.json">inspirations/daylight-product/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/garden-serif/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/garden-serif/previews/website.jpg" alt="Aperçu Garden Serif en mode Site web" loading="lazy"></a><a href="inspirations/garden-serif/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/garden-serif/previews/product-desktop.jpg" alt="Aperçu Garden Serif en mode Produit desktop" loading="lazy"></a><a href="inspirations/garden-serif/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/garden-serif/previews/presentation.jpg" alt="Aperçu Garden Serif en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Newsreader',system-ui,sans-serif">Garden Serif</h3>
+    <p class="meta"><code>garden-serif</code> · clair · Newsreader / Hanken Grotesk</p>
+    <div class="sw"><i style="background:#FBFBF8" title="base #FBFBF8"></i><i style="background:#FFFFFF" title="surface #FFFFFF"></i><i style="background:#F2F4EF" title="raised #F2F4EF"></i><i style="background:#E2E5DF" title="line #E2E5DF"></i><i style="background:#232323" title="ink #232323"></i><i style="background:#62646A" title="muted #62646A"></i><i style="background:#0B6FA4" title="accent #0B6FA4"></i><i style="background:#7FC1B8" title="accent2 #7FC1B8"></i><i style="background:#2D734C" title="success #2D734C"></i><i style="background:#855F19" title="warning #855F19"></i><i style="background:#B03C30" title="danger #B03C30"></i></div>
+    <p class="sum">Une tech qui a de la poésie : blanc cassé, serif légère et élégante, bleu céruléen, et de grandes images-paysages où le texte flotte sur du verre dépoli.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/garden-serif/dna.json">inspirations/garden-serif/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/height-light/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/height-light/previews/website.jpg" alt="Aperçu Height Light en mode Site web" loading="lazy"></a><a href="inspirations/height-light/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/height-light/previews/product-desktop.jpg" alt="Aperçu Height Light en mode Produit desktop" loading="lazy"></a><a href="inspirations/height-light/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/height-light/previews/presentation.jpg" alt="Aperçu Height Light en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter',system-ui,sans-serif">Height Light</h3>
+    <p class="meta"><code>height-light</code> · clair · Inter</p>
+    <div class="sw"><i style="background:#FFFFFF" title="base #FFFFFF"></i><i style="background:#FFFFFF" title="surface #FFFFFF"></i><i style="background:#F1F1F1" title="raised #F1F1F1"></i><i style="background:#E2E2E2" title="line #E2E2E2"></i><i style="background:#222222" title="ink #222222"></i><i style="background:#6B6B6B" title="muted #6B6B6B"></i><i style="background:#262626" title="accent #262626"></i><i style="background:#2A52D8" title="accent2 #2A52D8"></i><i style="background:#2F6E15" title="success #2F6E15"></i><i style="background:#94500A" title="warning #94500A"></i><i style="background:#B8202F" title="danger #B8202F"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#141414" title="night #141414"></i><i style="background:#2B2B2B" title="sidebar #2B2B2B"></i><i style="background:#3A3A3A" title="sidebar-raised #3A3A3A"></i><i style="background:#5E9412" title="spectrum-green #5E9412"></i><i style="background:#B07A00" title="spectrum-amber #B07A00"></i><i style="background:#E2445C" title="spectrum-rose #E2445C"></i><i style="background:#C21FD6" title="spectrum-magenta #C21FD6"></i><i style="background:#8B2BE2" title="spectrum-violet #8B2BE2"></i><i style="background:#1F4BFF" title="spectrum-blue #1F4BFF"></i><i style="background:#B8202F" title="tag-design #B8202F"></i><i style="background:#2A52D8" title="tag-engineering #2A52D8"></i><i style="background:#2F6E15" title="tag-marketing #2F6E15"></i><i style="background:#94500A" title="tag-product #94500A"></i><i style="background:#94500A" title="progress #94500A"></i><i style="background:#D0334B" title="presence #D0334B"></i><i style="background:#2A52D8" title="focus #2A52D8"></i></div>
+    <p class="sum">Le système visuel de Height : blanc pur, encre graphite, Inter, un seul bouton plein noir pour l'action, et la couleur réservée au logo et à quelques mots-clés en arc-en-ciel lettre par lettre (vert, ambre, rose, magenta, violet, bleu). Authentification en carte flottante à deux tons (haut blanc, bas gris clair). En produit : barre latérale graphite sombre contre un plan de travail blanc, documents de tâche aux titres généreux, chips d'attributs teintés et panneau de discussion avec agent IA.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/height-light/dna.json">inspirations/height-light/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/lilac-dusk/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/lilac-dusk/previews/website.jpg" alt="Aperçu Lilac Dusk en mode Site web" loading="lazy"></a><a href="inspirations/lilac-dusk/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/lilac-dusk/previews/product-desktop.jpg" alt="Aperçu Lilac Dusk en mode Produit desktop" loading="lazy"></a><a href="inspirations/lilac-dusk/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/lilac-dusk/previews/presentation.jpg" alt="Aperçu Lilac Dusk en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Hanken Grotesk',system-ui,sans-serif">Lilac Dusk</h3>
+    <p class="meta"><code>lilac-dusk</code> · sombre · Hanken Grotesk</p>
+    <div class="sw"><i style="background:#0E0E13" title="base #0E0E13"></i><i style="background:#18181E" title="surface #18181E"></i><i style="background:#24242B" title="raised #24242B"></i><i style="background:#2C2C34" title="line #2C2C34"></i><i style="background:#F2F2F5" title="ink #F2F2F5"></i><i style="background:#8D8D99" title="muted #8D8D99"></i><i style="background:#E9E9EE" title="accent #E9E9EE"></i><i style="background:#A9A2F2" title="accent2 #A9A2F2"></i><i style="background:#4FC596" title="success #4FC596"></i><i style="background:#E4B85C" title="warning #E4B85C"></i><i style="background:#EE6A7E" title="danger #EE6A7E"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#A9A2F2" title="grad-from #A9A2F2"></i><i style="background:#D9C6E6" title="grad-mid #D9C6E6"></i><i style="background:#EDA886" title="grad-to #EDA886"></i><i style="background:#4FC596" title="gain #4FC596"></i><i style="background:#EE6A7E" title="loss #EE6A7E"></i><i style="background:#5B8CFF" title="focus #5B8CFF"></i></div>
+    <p class="sum">Fintech nocturne et feutrée inspirée de Fey : noir bleuté profond, titres centrés en grotesque semi-grasse traversés d'un dégradé lilas → abricot, halo de lumière diffus derrière l'unique bloc d'action, pilules claires, keycaps inline et palette de commandes ⌘K. En produit : panneaux sombres très arrondis, données en ticks vert/rose, dock flottant en bas d'écran.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/lilac-dusk/dna.json">inspirations/lilac-dusk/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/linear-dark/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/linear-dark/previews/website.jpg" alt="Aperçu Linear Dark en mode Site web" loading="lazy"></a><a href="inspirations/linear-dark/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/linear-dark/previews/product-desktop.jpg" alt="Aperçu Linear Dark en mode Produit desktop" loading="lazy"></a><a href="inspirations/linear-dark/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/linear-dark/previews/presentation.jpg" alt="Aperçu Linear Dark en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter',system-ui,sans-serif">Linear Dark</h3>
+    <p class="meta"><code>linear-dark</code> · sombre · Inter</p>
+    <div class="sw"><i style="background:#08090A" title="base #08090A"></i><i style="background:#0F1011" title="surface #0F1011"></i><i style="background:#1A1B1E" title="raised #1A1B1E"></i><i style="background:#23252A" title="line #23252A"></i><i style="background:#F7F8F8" title="ink #F7F8F8"></i><i style="background:#8A8F98" title="muted #8A8F98"></i><i style="background:#E6E6E6" title="accent #E6E6E6"></i><i style="background:#5E6AD2" title="accent2 #5E6AD2"></i><i style="background:#4CB782" title="success #4CB782"></i><i style="background:#F2C94C" title="warning #F2C94C"></i><i style="background:#EB5757" title="danger #EB5757"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#5E6AD2" title="brand #5E6AD2"></i><i style="background:#828FFF" title="brand-soft #828FFF"></i><i style="background:#5E6AD2" title="focus #5E6AD2"></i><i style="background:#B4BCD0" title="ink-soft #B4BCD0"></i><i style="background:#F2C94C" title="progress #F2C94C"></i><i style="background:#5E6AD2" title="done #5E6AD2"></i><i style="background:#EB5757" title="urgent #EB5757"></i></div>
+    <p class="sum">Le système visuel de linear.app en sombre : noir presque pur, grotesque Inter medium très serrée en titres géants alignés à gauche, gris froids pour tout le reste, un bouton clair comme seule action et un indigo réservé à de minuscules signaux. En produit : trois volets séparés par des filets, icônes d'état circulaires, propriétés en liste, panneau d'agent flottant en mono.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/linear-dark/dna.json">inspirations/linear-dark/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/linear-light/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/linear-light/previews/website.jpg" alt="Aperçu Linear Light en mode Site web" loading="lazy"></a><a href="inspirations/linear-light/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/linear-light/previews/product-desktop.jpg" alt="Aperçu Linear Light en mode Produit desktop" loading="lazy"></a><a href="inspirations/linear-light/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/linear-light/previews/presentation.jpg" alt="Aperçu Linear Light en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter',system-ui,sans-serif">Linear Light</h3>
+    <p class="meta"><code>linear-light</code> · clair · Inter</p>
+    <div class="sw"><i style="background:#FAFAFA" title="base #FAFAFA"></i><i style="background:#FFFFFF" title="surface #FFFFFF"></i><i style="background:#F0F0F1" title="raised #F0F0F1"></i><i style="background:#E4E4E7" title="line #E4E4E7"></i><i style="background:#1F2023" title="ink #1F2023"></i><i style="background:#696D74" title="muted #696D74"></i><i style="background:#5E6AD2" title="accent #5E6AD2"></i><i style="background:#4F5BC4" title="accent2 #4F5BC4"></i><i style="background:#1A6342" title="success #1A6342"></i><i style="background:#7D4C06" title="warning #7D4C06"></i><i style="background:#A3231F" title="danger #A3231F"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#5E6AD2" title="brand #5E6AD2"></i><i style="background:#5E6AD2" title="focus #5E6AD2"></i><i style="background:#111113" title="ink-strong #111113"></i><i style="background:#B07F00" title="progress #B07F00"></i><i style="background:#5E6AD2" title="done #5E6AD2"></i><i style="background:#A3231F" title="urgent #A3231F"></i><i style="background:#23955A" title="workspace #23955A"></i></div>
+    <p class="sum">Le système visuel de Linear en clair, tel qu'on le voit à l'inscription, à l'onboarding et dans l'app : gris très pâle, encre graphite, Inter medium sobre, une seule action pleine en pilule indigo, cartes blanches à ombre douce, étapes centrées dans une colonne étroite avec pastilles de progression. En produit : barre latérale posée sur le fond, zone de travail en panneau blanc inset, composeur « Ask … » et cartes d'exemples.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/linear-light/dna.json">inspirations/linear-light/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/plumeform/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/plumeform/previews/website.jpg" alt="Aperçu Plumeform en mode Site web" loading="lazy"></a><a href="inspirations/plumeform/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/plumeform/previews/product-desktop.jpg" alt="Aperçu Plumeform en mode Produit desktop" loading="lazy"></a><a href="inspirations/plumeform/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/plumeform/previews/presentation.jpg" alt="Aperçu Plumeform en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Manrope',system-ui,sans-serif">Plumeform</h3>
+    <p class="meta"><code>plumeform</code> · clair · Manrope</p>
+    <div class="sw"><i style="background:#FBFAF6" title="base #FBFAF6"></i><i style="background:#F5F3EE" title="surface #F5F3EE"></i><i style="background:#F0EFEB" title="raised #F0EFEB"></i><i style="background:#E0DED8" title="line #E0DED8"></i><i style="background:#151F21" title="ink #151F21"></i><i style="background:#464F50" title="muted #464F50"></i><i style="background:#005B54" title="accent #005B54"></i><i style="background:#CBF0E7" title="accent2 #CBF0E7"></i><i style="background:#2B6C47" title="success #2B6C47"></i><i style="background:#815A1E" title="warning #815A1E"></i><i style="background:#A73D2E" title="danger #A73D2E"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#021716" title="night #021716"></i><i style="background:#0A2423" title="night-raised #0A2423"></i><i style="background:#004640" title="teal-strong #004640"></i></div>
+    <p class="sum">SaaS chaleureux et soigné : crème cassé, encre vert-noir, sarcelle profonde pour l'action, menthe pâle en halos diffus, Manrope très gras serré, tout en pilules et grands arrondis, ouverture sur un hero vert nuit.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/plumeform/dna.json">inspirations/plumeform/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/room-and-pillar/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/room-and-pillar/previews/website.jpg" alt="Aperçu Room &amp; Pillar en mode Site web" loading="lazy"></a><a href="inspirations/room-and-pillar/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/room-and-pillar/previews/product-desktop.jpg" alt="Aperçu Room &amp; Pillar en mode Produit desktop" loading="lazy"></a><a href="inspirations/room-and-pillar/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/room-and-pillar/previews/presentation.jpg" alt="Aperçu Room &amp; Pillar en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter Tight',system-ui,sans-serif">Room &amp; Pillar</h3>
+    <p class="meta"><code>room-and-pillar</code> · sombre · Inter Tight</p>
+    <div class="sw"><i style="background:#131419" title="base #131419"></i><i style="background:#1F2025" title="surface #1F2025"></i><i style="background:#2A2B2F" title="raised #2A2B2F"></i><i style="background:#323338" title="line #323338"></i><i style="background:#F2F2F6" title="ink #F2F2F6"></i><i style="background:#C2C2DD" title="muted #C2C2DD"></i><i style="background:#D2FE71" title="accent #D2FE71"></i><i style="background:#C2C2DD" title="accent2 #C2C2DD"></i><i style="background:#4CC38A" title="success #4CC38A"></i><i style="background:#E8C547" title="warning #E8C547"></i><i style="background:#EF7270" title="danger #EF7270"></i></div><div class="sw extra" title="Couleurs métier"><i style="background:#F2F2F6" title="paper #F2F2F6"></i><i style="background:#DBDBE9" title="paper-soft #DBDBE9"></i></div>
+    <p class="sum">Capital-risque sombre et éditorial : noir graphite bleuté, sections papier gris lavande, un seul jaune-citron électrique pour l'action, grotesque gras ultra-serré en titres géants, labels mono en capitales, rendus 3D monochromes.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/room-and-pillar/dna.json">inspirations/room-and-pillar/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/sui-gradient/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/sui-gradient/previews/website.jpg" alt="Aperçu Sui Gradient en mode Site web" loading="lazy"></a><a href="inspirations/sui-gradient/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/sui-gradient/previews/product-desktop.jpg" alt="Aperçu Sui Gradient en mode Produit desktop" loading="lazy"></a><a href="inspirations/sui-gradient/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/sui-gradient/previews/presentation.jpg" alt="Aperçu Sui Gradient en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter',system-ui,sans-serif">Sui Gradient</h3>
+    <p class="meta"><code>sui-gradient</code> · sombre · Inter</p>
+    <div class="sw"><i style="background:#000000" title="base #000000"></i><i style="background:#131518" title="surface #131518"></i><i style="background:#1F2124" title="raised #1F2124"></i><i style="background:#242424" title="line #242424"></i><i style="background:#FFFFFF" title="ink #FFFFFF"></i><i style="background:#838A97" title="muted #838A97"></i><i style="background:#D93A3F" title="accent #D93A3F"></i><i style="background:#2276D6" title="accent2 #2276D6"></i><i style="background:#4CC38A" title="success #4CC38A"></i><i style="background:#E8C547" title="warning #E8C547"></i><i style="background:#FF8A65" title="danger #FF8A65"></i></div>
+    <p class="sum">Base noire et grotesque fine inspirées de sui.io, réchauffées par un dégradé rouge, violet, bleu réservé au moment fort.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/sui-gradient/dna.json">inspirations/sui-gradient/dna.json</a></p>
+  </div>
+</article>
+<article class="card">
+  <div class="pv"><a href="inspirations/sui-original/previews/website.jpg" title="Aperçu Site web"><img src="inspirations/sui-original/previews/website.jpg" alt="Aperçu Sui Original en mode Site web" loading="lazy"></a><a href="inspirations/sui-original/previews/product-desktop.jpg" title="Aperçu Produit desktop"><img src="inspirations/sui-original/previews/product-desktop.jpg" alt="Aperçu Sui Original en mode Produit desktop" loading="lazy"></a><a href="inspirations/sui-original/previews/presentation.jpg" title="Aperçu Présentation"><img src="inspirations/sui-original/previews/presentation.jpg" alt="Aperçu Sui Original en mode Présentation" loading="lazy"></a></div>
+  <div class="body">
+    <h3 style="font-family:'Inter',system-ui,sans-serif">Sui Original</h3>
+    <p class="meta"><code>sui-original</code> · sombre · Inter</p>
+    <div class="sw"><i style="background:#000000" title="base #000000"></i><i style="background:#131518" title="surface #131518"></i><i style="background:#1F2124" title="raised #1F2124"></i><i style="background:#242424" title="line #242424"></i><i style="background:#FFFFFF" title="ink #FFFFFF"></i><i style="background:#838A97" title="muted #838A97"></i><i style="background:#2276D6" title="accent #2276D6"></i><i style="background:#94C6FF" title="accent2 #94C6FF"></i><i style="background:#4CC38A" title="success #4CC38A"></i><i style="background:#E8C547" title="warning #E8C547"></i><i style="background:#EF6461" title="danger #EF6461"></i></div>
+    <p class="sum">Le système visuel de sui.io tel que scanné : noir profond, grotesque fine et très serrée, un seul bleu franc, conteneurs à angles droits.</p>
+    <div class="modes"><span class="mode on" title="sert le mode Présentation">Présentation</span><span class="mode on" title="sert le mode Produit desktop">Produit desktop</span><span class="mode on" title="sert le mode Site web">Site web</span></div>
+    <p class="file"><a href="inspirations/sui-original/dna.json">inspirations/sui-original/dna.json</a></p>
+  </div>
+</article>
+</div>
+</main>
+</body>
+</html>
