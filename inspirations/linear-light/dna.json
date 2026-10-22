@@ -39,7 +39,7 @@
     "danger": "#A3231F"
   },
   "extraColors": {
-    "brand": "#5E6AD2",
+    "brand-ui": "#5E6AD2",
     "focus": "#5E6AD2",
     "ink-strong": "#111113",
     "progress": "#B07F00",

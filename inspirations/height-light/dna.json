@@ -164,6 +164,13 @@
         "body": "32px",
         "caption": "22px"
       },
+      "roles": {
+        "alt": "ref:night",
+        "onAlt": "ref:base",
+        "onAltMuted": "#9A9A9A",
+        "connector": "ref:muted",
+        "brand": { "from": "ref:spectrum-violet", "to": "ref:spectrum-blue" }
+      },
       "rules": {
         "do": [
           "Un titre en text-title (96px) par diapo, qui affirme ; au plus six lignes en text-body (32px) ; sources, dates et numéros en text-caption text-muted (22px), jamais plus petit.",

@@ -140,7 +140,7 @@
       }
     },
     "presentation": {
-      "signature": "Une diapo d'ouverture bg-night traversée de rideaux de lumière verticaux aux couleurs de l'icône (from-brand-red/40 via-brand-plum/25 to-brand-indigo/40, flous), titre Manrope font-extrabold serré en text-display text-inverse ; les diapos suivantes passent sur le blanc lavande bg-base avec des cartes rounded-card à liseré ring-accent2.",
+      "signature": "Une diapo d'ouverture bg-alt traversée de rideaux de lumière verticaux aux couleurs de l'icône (from-brand-red/40 via-brand-plum/25 to-brand-indigo/40, flous), titre Manrope font-extrabold serré en text-display text-on-alt ; les diapos suivantes passent sur le blanc lavande bg-base avec des cartes rounded-card à liseré ring-accent2.",
       "typeScale": {
         "display": "152px",
         "title": "96px",
@@ -148,10 +148,19 @@
         "body": "32px",
         "caption": "22px"
       },
+      "roles": {
+        "alt": "ref:night",
+        "onAlt": "ref:base",
+        "onAltMuted": "#B9B3D8",
+        "highlight": "#6E66C8",
+        "emphasis": "#6E66C8",
+        "connector": "#8B87A8",
+        "brand": { "from": "ref:brand-red", "via": "ref:brand-plum", "to": "ref:brand-indigo" }
+      },
       "rules": {
         "do": [
           "Un titre en text-title (96px) par diapo, qui affirme ; au plus six lignes en text-body (32px) ; sources, dates et numéros en text-caption text-muted (22px), jamais plus petit.",
-          "Seules l'ouverture et la clôture passent en bg-night (text-inverse, text-inverse/70 pour le secondaire) ; le reste du deck sur bg-base.",
+          "Seules l'ouverture et la clôture passent en bg-alt (text-on-alt, text-on-alt-muted pour le secondaire) ; le reste du deck sur bg-base.",
           "Titres Manrope font-bold à font-extrabold, tracking-tight ; un mot-clé au plus en text-accent.",
           "Preuves dans des cartes bg-surface rounded-card shadow-card p-12, chiffre en text-display tabular-nums.",
           "Surtitres en text-caption font-semibold uppercase tracking-widest text-muted."

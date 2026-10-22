@@ -39,7 +39,7 @@
     "danger": "#EB5757"
   },
   "extraColors": {
-    "brand": "#5E6AD2",
+    "brand-ui": "#5E6AD2",
     "brand-soft": "#828FFF",
     "focus": "#5E6AD2",
     "ink-soft": "#B4BCD0",
@@ -84,7 +84,7 @@
   },
   "modes": {
     "website": {
-      "signature": "Hero aligné à gauche sur fond bg-base : titre géant en Inter medium très serré sur deux lignes (text-6xl md:text-7xl font-medium tracking-[-0.035em] leading-[1.05] text-ink), sous-titre text-lg text-muted sur une seule ligne, annonce alignée à droite sur la même ligne (point bg-brand size-1.5 avec halo ring-4 ring-brand/20, titre text-ink font-medium, lien text-muted suivi d'une flèche), puis une capture du produit dans un cadre bg-surface border border-line rounded-card qui sort par le bas de l'écran et se fond dans bg-base.",
+      "signature": "Hero aligné à gauche sur fond bg-base : titre géant en Inter medium très serré sur deux lignes (text-6xl md:text-7xl font-medium tracking-[-0.035em] leading-[1.05] text-ink), sous-titre text-lg text-muted sur une seule ligne, annonce alignée à droite sur la même ligne (point bg-brand-ui size-1.5 avec halo ring-4 ring-brand-ui/20, titre text-ink font-medium, lien text-muted suivi d'une flèche), puis une capture du produit dans un cadre bg-surface border border-line rounded-card qui sort par le bas de l'écran et se fond dans bg-base.",
       "rules": {
         "do": [
           "Fond bg-base partout ; conteneur max-w-6xl px-6 ; tout est aligné à gauche, jamais centré sauf le bandeau d'appel final.",
@@ -100,7 +100,7 @@
         ],
         "dont": [
           "Pas de dégradé coloré ni de halo lumineux derrière les titres ; seuls des fondus noirs vers bg-base sont permis.",
-          "Pas d'indigo en aplat : bg-brand ne sert qu'à de minuscules signaux (point d'annonce, puce, focus).",
+          "Pas d'indigo en aplat : bg-brand-ui ne sert qu'à de minuscules signaux (point d'annonce, puce, focus).",
           "Pas de titres en gras 700, en capitales, en serif ou centrés.",
           "Pas de cartes à ombre portée sur la page : la structure vient des filets border-line.",
           "Pas de couleur codée en dur ni de couleur Tailwind nommée : tokens et extraColors uniquement.",
@@ -169,7 +169,7 @@
         "dont": [
           "Pas de titre de diapo sous 92px ni de corps sous 32px : la diapo se lit à trois mètres.",
           "Pas de dégradé coloré ni de halo lumineux.",
-          "Pas d'indigo en aplat : bg-brand pour un minuscule signal.",
+          "Pas d'indigo en aplat : bg-brand-ui pour un minuscule signal.",
           "Pas de titre en gras 700, en capitales ou en serif.",
           "Pas d'emoji ni d'illustration colorée."
         ]

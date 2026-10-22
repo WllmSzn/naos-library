@@ -144,10 +144,16 @@
         "body": "34px",
         "caption": "24px"
       },
+      "roles": {
+        "alt": "ref:paper",
+        "onAlt": "ref:base",
+        "onAltMuted": "#5B5B66",
+        "connector": "#7A7C84"
+      },
       "rules": {
         "do": [
           "Un titre en text-title (104px) par diapo, qui affirme ; au plus six lignes en text-body (34px) ; sources, dates et numéros en text-caption text-muted (24px), jamais plus petit.",
-          "Alternance de diapos sombres bg-base et papier bg-paper (text-inverse, text-inverse/70).",
+          "Alternance de diapos sombres bg-base et papier bg-alt (text-on-alt, text-on-alt-muted).",
           "Contraste d'échelle : chiffre ou mot géant face à une ligne courte en text-body tracking-tight.",
           "Labels et sources en font-mono text-caption uppercase.",
           "Rendus 3D monochromes en emplacements data-image décrits."

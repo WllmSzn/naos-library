@@ -159,6 +159,10 @@
         "body": "32px",
         "caption": "22px"
       },
+      "roles": {
+        "connector": "#6A6A78",
+        "brand": { "from": "ref:grad-from", "via": "ref:grad-mid", "to": "ref:grad-to" }
+      },
       "rules": {
         "do": [
           "Un titre en text-title (92px) par diapo, qui affirme ; au plus six lignes en text-body (32px) ; sources, dates et numéros en text-caption text-muted (22px), jamais plus petit.",
